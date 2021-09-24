@@ -28,11 +28,11 @@ def toUTM(lat, long, ellip):
     
     A = lat.cos*Δlong.sin
 
-    xi = 0.5 * log((1 + A)/(1 - A))
+    ξ = 0.5 * log((1 + A)/(1 - A))
     
-    ζ = ellip.ep2/2 * xi * lat.cos2
+    ζ = ellip.ep2/2 * ξ * lat.cos2
 
-    X = xi * v * (1 + ζ/3) + 500000
+    X = ξ * v * (1 + ζ/3) + 500000
     
     η = atan(lat.tan/Δlong.cos) - lat.rad
     
