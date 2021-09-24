@@ -1,13 +1,10 @@
 from math import trunc, cos, sin, pi, log, atan, tan
-print("Hello world!")
 
-def toRad(deg):
-    return deg * pi / 180
 
 class Angle:
     def __init__(self, deg):
         self.deg = deg
-        self.rad = toRad(deg)
+        self.rad = deg*pi/180
         self.cos2 = cos(self.rad)**2
         self.cos = cos(self.rad)
         self.sin = sin(self.rad)
@@ -19,6 +16,7 @@ class Ellipsoid:
         self.b = b
         self.ep2 = (a**2 - b**2) / b**2
         self.c = a**2/b
+
 
 def toUTM(lat, long, ellip):
     v = ellip.c * 0.9996 / (1 + ellip.ep2 * lat.cos2)**0.5
@@ -57,12 +55,19 @@ def toUTM(lat, long, ellip):
     return(round(X,6),round(Y,6), huso)
 
 
+# Input:
 WGS84 = Ellipsoid(6378137, 6356752.21424)
-
 lat = Angle((5 + 10/60 + 47.79159/3600)*-1)
 long = Angle((80 + 37/60 + 39.96811/3600)*-1)
 
+# 
 (X,Y,huso) = toUTM(lat,long, WGS84)
 print("X             Y              HUSO")
 print(X,Y,huso)
 
+# Output:
+
+"""
+X             Y              HUSO
+541252.551507 9427433.043616 17
+"""
