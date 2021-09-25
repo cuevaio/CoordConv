@@ -1,3 +1,7 @@
+import sys
+sys.path.insert(1, '/home/tonycueva/UTEC/CoordConv')
+
+
 import csv
 import re
 
@@ -6,8 +10,8 @@ from exif import Image
 
 from lib.functions import toDecimal
 
-pathList = glob("photos/*.jpg")
-with open('./input.csv', mode='w') as csv_file:
+pathList = glob("example/photos/*.jpg")
+with open('example/input.csv', mode='w') as csv_file:
     fieldnames = ["ID", "Latitud", "Longitud", "Altitud"]
     
     csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)

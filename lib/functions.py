@@ -1,3 +1,7 @@
+import sys
+sys.path.insert(1, '/home/tonycueva/UTEC/CoordConv')
+
+
 from math import trunc, sin, log, atan, sqrt
 from lib.classes import Angle
 

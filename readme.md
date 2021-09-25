@@ -2,18 +2,18 @@
 
 ## Cómo usar
 
-1. ### Importa lo necesario:
+### 1. Importa lo necesario:
 ```python
 from lib.functions import toCART, toUTM
 from lib.classes import Ellipsoid
 ```
-1. ### Define el elipsoide a utilizar:
+### 2. Define el elipsoide a utilizar:
 Debes definir el elipsoide con el que se harán los cálculos. Para esto 
 crea uno indicando sus semiejes mayor (a) y menor (b).
 ```python
 WGS84 = Ellipsoid(a=6378137, b=6356752.21424)
 ```
-1. ### Convierte
+### 3. Convierte
 Para convertir a coordenadas UTM:
 ```python
 (Este, Norte, huso) = toUTM(lat=-11.880944, long=-76.995881, ellip=WGS84)
