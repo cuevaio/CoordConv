@@ -56,7 +56,7 @@ LI03["long"] = -toDecimal(LI03["long"])
 
 LI03["h"] = 698.8767
 
-(LI03["Este (m)"],LI03["Norte(m)"],LI03["Huso"]) = toUTM(LI03["lat"],LI03["long"],WGS84)
+(LI03["Este (m)"],LI03["Norte (m)"],LI03["Huso"]) = toUTM(LI03["lat"],LI03["long"],WGS84)
 (LI03["X (m)"],LI03["Y (m)"],LI03["Z (m)"]) = toCART(LI03["lat"],LI03["long"],LI03["h"],WGS84)
 
 trueLI03 = {

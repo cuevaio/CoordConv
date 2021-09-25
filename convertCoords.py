@@ -1,7 +1,7 @@
 import csv
 
 from lib.functions import toCART, toUTM
-from lib.classes import Ellipsoid, Angle
+from lib.classes import Ellipsoid
 
 WGS84 = Ellipsoid(6378137, 6356752.21424)
 
@@ -17,8 +17,8 @@ with open('input.csv') as input_file:
         for row in csv_reader:
             ID = row["ID"]
 
-            lat = Angle(float(row["Latitud"]))
-            long = Angle(float(row["Longitud"]))
+            lat = float(row["Latitud"])
+            long = float(row["Longitud"])
             h = float(row["Altitud"])
 
             (E,N,huso) = toUTM(lat,long,WGS84)
@@ -27,8 +27,8 @@ with open('input.csv') as input_file:
 
             data = {
                 "ID" : ID,
-                "Latitud" : lat.deg,
-                "Longitud" : long.deg,
+                "Latitud" : lat,
+                "Longitud" : long,
                 "Elevación Elipsoidal (m)" : h,
                 "Este (m)" : E,
                 "Norte (m)" : N,

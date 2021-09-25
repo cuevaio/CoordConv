@@ -19,7 +19,7 @@ with open('./input.csv', mode='w') as csv_file:
 
         lat = toDecimal(image.gps_latitude)
         long = toDecimal(image.gps_longitude)
-        alt = round(image.gps_altitude,6)
+        alt = round(image.gps_altitude,4)
 
         data = {
             "ID" : re.findall('[0-9]+', path)[0],
