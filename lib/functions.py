@@ -1,7 +1,13 @@
 from math import trunc, sin, log, atan, sqrt
 from lib.classes import Angle
 
+def toDecimal(angle):
+    return round(angle[0] + angle[1]/60 + angle[2]/3600, 6)
+
 def toUTM(lat, long, ellip):
+    lat = Angle(lat)
+    long = Angle(long)
+
     huso = trunc(long.deg/6 + 31)
     Δlong= Angle(long.deg - huso * 6 + 183)
 
@@ -31,14 +37,17 @@ def toUTM(lat, long, ellip):
         N+=  + 10**7
 
 
-    return(round(E,6),round(N,6), huso)
+    return(round(E,4),round(N,4), huso)
 
 
 def toCART(lat, long, h, ellip):
-    N = ellip.a / (1 - ellip.e2 * lat.sin2)*0.5
+    lat = Angle(lat)
+    long = Angle(long)
+    
+    N = ellip.a / (1 - ellip.e2 * lat.sin2)**0.5
 
     X = (N + h) * lat.cos * long.cos
     Y = (N + h) * lat.cos * long.sin    
     Z = (N * (1 - ellip.e2) + h) * lat.sin
     
-    return (round(X,6),round(Y,6),round(Z,6))
+    return (round(X,4),round(Y,4),round(Z,4))
